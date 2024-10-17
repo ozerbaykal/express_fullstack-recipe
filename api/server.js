@@ -1,5 +1,7 @@
 import express from "express";
-import cors from "cors"
+import cors from "cors";
+import recipeRouter from "./routes/recipeRoutes.js";
+
 
 //express kurulumu
 const app = express();
@@ -14,6 +16,7 @@ app.use(express.json());
 
 //tarifler için crud operasyonalarını gerçekleştireceğimiz endpointleri tanımla
 
+app.use(recipeRouter)
 
 
 
