@@ -1,26 +1,26 @@
 import fs from "fs";
 
 //Json dosyasının içeriğini okur ve döndürür
-export const readRecipes = async () => {
+export const readRecipes = () => {
     try {
-        const text = await fs.readFileSync("../data.json", "utf-8")
+        const text = fs.readFileSync("./data.json", "utf-8")
 
         const data = JSON.parse(text);
 
         return data
 
     } catch (error) {
-        console.log(data)
+        console.log(error)
     }
 }
 // param olarak aldığı veriyi json dosyasına yazar
 export const writeRecipes = (data) => {
 
     try {
-        const text = fs.writeFileSync("../data.json", JSON.stringify(data))
+        fs.writeFileSync("./data.json", JSON.stringify(data))
 
     } catch (error) {
-        console.log(data)
+        console.log(error)
     }
 
 }
