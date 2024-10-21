@@ -82,4 +82,24 @@ export const deleteRecipe = (req, res) => {
 };
 
 
-export const updateRecipe = (req, res) => { };
+export const updateRecipe = (req, res) => {
+    //eski ratif nesnesini güncelle
+    const updated = { ...req.foundRecipe, ...req.body }
+
+    //güncellenecek elemanın sırasını bul 
+    const index = data.findIndex((i) => i.id === req.params.id)
+
+    //diziyi güncelle
+    data.splice(index, 1, updated)
+
+
+    //json dosyasını güncelle
+    writeRecipes(data)
+
+    //cevap gönder
+
+    res.status(200).json({ message: "tarif başarıyla güncellendi", recipe: updated, })
+
+
+
+};
