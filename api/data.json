@@ -1,29 +1,5 @@
 [
   {
-    "id": "asdasdf34asda43242asd",
-    "recipeName": "Mercimek Çorbası",
-    "category": "Yemek",
-    "ingredients": ["1", "2", "3", "4"],
-    "instructions": [
-      "Mercimeği yıkayın ve süzün.",
-      "Soğanı doğrayın",
-      " havuç ve patatesi küçük küpler halinde kesin.",
-      "Sıvı yağı bir tencerede ısıtın",
-      " doğranmış soğanı ekleyin ve pembeleşene kadar kavurun.",
-      "Havuç ve patatesi ekleyip birkaç dakika daha kavurun.",
-      "Mercimeği ekleyin",
-      " suyu ekleyin ve kaynamaya bırakın.",
-      "Kaynadıktan sonra altını kısıp tencerenin kapağını kapatın",
-      " mercimekler iyice yumuşayana kadar pişirin.",
-      "Çorbayı blenderdan geçirin",
-      " tuz ve baharatları ekleyin.",
-      "Limon suyu ile servis yapın."
-    ],
-    "recipeTime": "25",
-    "servingSuggestion": "Mercimek çorbası, yanında taze ekmekle servis edilebilir.",
-    "image": "https://picsum.photos/501"
-  },
-  {
     "id": "asdasda43242dsfgdfhg",
     "recipeName": "Spagetti Bolognese",
     "category": "Ana Yemek",
@@ -145,5 +121,29 @@
     "servingSuggestion": "Kısır, marul yaprakları ile birlikte servis edilebilir.",
     "id": "70759435-a81c-4a59-be09-236d378debd1",
     "image": "https://picsum.photos/seed/fc2b7f23-17c1-4ac3-8cdd-36e02c24fd55/500/500"
+  },
+  {
+    "recipeName": "Mercimek Çorbası",
+    "category": "Yemek",
+    "ingredients": ["1", "2", "3", "4"],
+    "instructions": [
+      "Mercimeği yıkayın ve süzün.",
+      "Soğanı doğrayın",
+      " havuç ve patatesi küçük küpler halinde kesin.",
+      "Sıvı yağı bir tencerede ısıtın",
+      " doğranmış soğanı ekleyin ve pembeleşene kadar kavurun.",
+      "Havuç ve patatesi ekleyip birkaç dakika daha kavurun.",
+      "Mercimeği ekleyin",
+      " suyu ekleyin ve kaynamaya bırakın.",
+      "Kaynadıktan sonra altını kısıp tencerenin kapağını kapatın",
+      " mercimekler iyice yumuşayana kadar pişirin.",
+      "Çorbayı blenderdan geçirin",
+      " tuz ve baharatları ekleyin.",
+      "Limon suyu ile servis yapın."
+    ],
+    "recipeTime": "25",
+    "servingSuggestion": "Mercimek çorbası, yanında taze ekmekle servis edilebilir.",
+    "id": "9ea2915b-48df-4c96-b822-885ba09bb67a",
+    "image": "https://picsum.photos/seed/c6e20603-cd99-421c-bba9-51a743b61cb5/500/500"
   }
 ]

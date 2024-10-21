@@ -9,7 +9,7 @@ const controlId = (req, res, next) => {
     if (!found) {
         return res.status(404).json({ message: "Aradığınız id li eleman bulunamdı" })
     }
-    //req nesnesi içerisine bulunan ekle
+    //req nesnesi içerisine bulunan eleamanı ekle
     req.foundRecipe = found;
 
     //eğer eleman bulunduysa sonraki adıma devam et

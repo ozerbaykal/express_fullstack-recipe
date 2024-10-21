@@ -3,7 +3,8 @@ import crypto from "crypto"
 import isInValid from "../utils/IsInValid.js";
 
 
-let data = readRecipes();
+const data = readRecipes();
+
 
 export const getAllRecipes = (req, res) => {
     //tarif verisin bir kopyaısı oluştur
@@ -38,7 +39,8 @@ export const getAllRecipes = (req, res) => {
 
 export const createRecipe = (req, res) => {
     //isteğin body bölümünde gelen veriye eriş
-    const newRecipe = req.body;
+    let newRecipe = req.body;
+
 
     //verinin bütünlüğünü kontrol et
     if (isInValid(newRecipe)) {
@@ -48,34 +50,36 @@ export const createRecipe = (req, res) => {
     newRecipe = {
         ...newRecipe,
         id: crypto.randomUUID(),
-        photo: `https://picsum.photos/seed/${crypto.randomUUID()}/500/500`,
+        image: `https://picsum.photos/seed/${crypto.randomUUID()}/500/500`,
     }
 
     //tarif verisini diziye ekle
     data.push(newRecipe);
 
     //json dosyasını güncelle
-    writeRecipes(newRecipe);
+    writeRecipes(data);
 
 
 
     //cevap gönder
-    res.status(200).json({ message: "Yeni tarif Eklendi", recipe: newRecipe })
+    res.status(201).json({ message: "Yeni tarif Eklendi", recipe: newRecipe })
 };
 
 export const getRecipe = (req, res) => {
-    //res.status(200).json({ message: "Aradığınız tarif bulundu", found: req.foundRecipe })
+    res.status(200).json({ message: "Aradığınız tarif bulundu", found: req.foundRecipe })
 };
 
-export const deleteRecipe = (req, res) => { };
-// //silinecek elemanın sırasını bul
-// const index = data.findIndex((i) => i.id === req.params.id)
-// //eleamnı diziden kaldır
-// data.splice(index, 1)
-// //json dosyasını güncelle
-// writeRecipes.apply(data);
+export const deleteRecipe = (req, res) => {
+    //silinecek elemanın sırasını bul
+    const index = data.findIndex((i) => i.id === req.params.id)
+    //eleamnı diziden kaldır
+    data.splice(index, 1)
+    //json dosyasını güncelle
+    writeRecipes(data);
 
-// //cevap gönder
-// res.status(204)
+    //cevap gönder
+    res.status(204).json({})
+};
+
 
 export const updateRecipe = (req, res) => { };
