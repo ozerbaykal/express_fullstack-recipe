@@ -1,53 +1,71 @@
 import { readRecipes, writeRecipes } from "../model/recipeModel.js";
+import crypto from "crypto"
+import isInValid from "../utils/IsInValid.js";
 
 
-const data = readRecipes();
+let data = readRecipes();
 
 export const getAllRecipes = (req, res) => {
     //tarif verisin bir kopyaısı oluştur
-    let recipes = [...data]
+    let recipes = [...data];
 
     //aratılan kelime (küçük harfe çevir)
     const search = req.query?.search?.toLowerCase();
 
-
     //eğer search parametresi geldiyse filtreleme yap
     if (search) {
-        recipes = data.filter((recipe) => recipe.recipeName.toLowerCase().includes(search))
-
-
+        recipes = data.filter((recipe) =>
+            recipe.recipeName.toLowerCase().includes(search)
+        );
     }
     //sıralama parametresini al
     const order = req.query?.order?.toLowerCase();
     //eğer sort parametresi geldiyse sıralama yap
     if (order) {
-        recipes.sort((a, b) => order === "asc" ? a.recipeTime - b.recipeTime : b.recipeTime - a.recipeTime)
-
-
+        recipes.sort((a, b) =>
+            order === "asc"
+                ? a.recipeTime - b.recipeTime
+                : b.recipeTime - a.recipeTime
+        );
     }
-
 
     res.status(200).json({
         status: "success",
         results: data.length,
         recipes: recipes,
-
-
-    })
-
-
-
-
-
+    });
 };
 
-export const createRecipe = (req, res) => { };
+export const createRecipe = (req, res) => {
+    //isteğin body bölümünde gelen veriye eriş
+    const newRecipe = req.body;
+
+    //verinin bütünlüğünü kontrol et
+    if (isInValid(newRecipe)) {
+        return res.status(404).json({ message: "lütfen bütün değerleri tanımlayın" })
+    }
+    //veriye id  ve photo ekle
+    newRecipe = {
+        ...newRecipe,
+        id: crypto.randomUUID(),
+        photo: `https://picsum.photos/seed/${crypto.randomUUID()}/500/500`,
+    }
+
+    //tarif verisini diziye ekle
+    data.push(newRecipe);
+
+    //json dosyasını güncelle
+    writeRecipes(newRecipe);
+
+
+
+    //cevap gönder
+    res.status(200).json({ message: "Yeni tarif Eklendi", recipe: newRecipe })
+};
 
 export const getRecipe = (req, res) => {
     //res.status(200).json({ message: "Aradığınız tarif bulundu", found: req.foundRecipe })
-
 };
-
 
 export const deleteRecipe = (req, res) => { };
 // //silinecek elemanın sırasını bul
@@ -60,9 +78,4 @@ export const deleteRecipe = (req, res) => { };
 // //cevap gönder
 // res.status(204)
 
-
-
-
-
 export const updateRecipe = (req, res) => { };
-
