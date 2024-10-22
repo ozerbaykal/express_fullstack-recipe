@@ -7,3 +7,12 @@
 .active {
     color: orange;
 }
+
+@layer components {
+    .inp {
+        @apply rounded-md p-2 focus:outline-orange-400 shadow;
+
+
+    }
+
+}
