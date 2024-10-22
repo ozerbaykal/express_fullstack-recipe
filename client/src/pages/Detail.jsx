@@ -2,9 +2,10 @@ import { useParams, Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import api from "../api/index";
 import { IoMdArrowRoundBack } from "react-icons/io";
-import { FaTrashAlt } from "react-icons/fa";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
+import { TbClockHour8 } from "react-icons/tb";
+import DeleteButton from "../components/DeleteButton";
 const Detail = () => {
   const { id } = useParams();
 
@@ -25,10 +26,7 @@ const Detail = () => {
           <IoMdArrowRoundBack />
           Geri
         </Link>
-        <button className=" flex gap-2 items-center bg-orange-600 text-orange-100 font-semibold hover:bg-orange-200  hover:text-orange-800 py-1  px-2 rounded-md">
-          <FaTrashAlt />
-          Sil
-        </button>
+        <DeleteButton productId={data.id} />
       </div>
       {isLoading ? (
         <Loader />
@@ -40,7 +38,10 @@ const Detail = () => {
             <h1 className="text-3xl title">{data.recipeName}</h1>
             <div className="flex gap-4 my-5">
               <span className="badge"> {data.category}</span>
-              <span className="badge"> {data.recipeTime} dak.</span>
+              <span className="badge flex items-center gap-1">
+                <TbClockHour8 />
+                {data.recipeTime} dak.
+              </span>
             </div>
             <img
               className="rounded-lg max-h-[350px] w-full object-cover"
@@ -66,13 +67,14 @@ const Detail = () => {
                 ))}
               </ol>
             </div>
-
-            <div className="my-5">
-              <h2 className="title">Sunum Önerisi</h2>
-              <p className="text-lg text-orange-900 font-semibold">
-                {data.servingSuggestion}
-              </p>
-            </div>
+            {data.servingSuggestion && (
+              <div className="my-5">
+                <h2 className="title">Sunum Önerisi</h2>
+                <p className="text-lg text-orange-900 font-semibold">
+                  {data.servingSuggestion}
+                </p>
+              </div>
+            )}
           </div>
         )
       )}
