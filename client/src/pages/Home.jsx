@@ -6,6 +6,8 @@ import Search from "../components/Search";
 import Sort from "../components/Sort";
 import { useState } from "react";
 import { useDebounce } from "@uidotdev/usehooks";
+import Loader from "../components/Loader";
+import Error from "../components/Error";
 
 const Home = () => {
   //sıralama verilerini tut
@@ -21,7 +23,7 @@ const Home = () => {
   };
 
   //api den tarif verilerini al
-  const { isLoading, isError, data } = useQuery({
+  const { isLoading, isError, data, refetch } = useQuery({
     queryKey: ["recipes", order, debouncedTerm],
     queryFn: () =>
       api.get("/api/v1/recipes", { params }).then((res) => res.data.recipes),
@@ -33,9 +35,9 @@ const Home = () => {
 
       <section>
         {isLoading ? (
-          "Loader"
+          <Loader />
         ) : isError ? (
-          "Error "
+          <Error info={isError.message} refetch={refetch} />
         ) : (
           <>
             <div className="flex justify-between items-center">
