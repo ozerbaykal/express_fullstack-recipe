@@ -1,9 +1,13 @@
 import React from "react";
 
-const Sort = () => {
+const Sort = ({ setOrder }) => {
   return (
-    <select className="rounded-md p-2 ">
-      <option disabled selected>
+    <select
+      defaultValue=""
+      className="rounded-md p-2 "
+      onChange={(e) => setOrder(e.target.value)}
+    >
+      <option value="" disabled>
         Süreye Göre
       </option>
 

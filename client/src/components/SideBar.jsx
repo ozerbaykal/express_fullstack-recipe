@@ -13,7 +13,7 @@ const SideBar = () => {
         {links.map((i, index) => (
           <NavLink
             key={index}
-            className="flex gap-4 items-center text-lg text-gray-700 hover:bg-orange-100 p-2 rounded-full transition hover:scale-110"
+            className="flex gap-4 items-center text-lg text-orange-900 hover:bg-orange-100 p-2 rounded-full transition hover:scale-110"
             to={i.path}
           >
             <span className="max-md:text-3xl ">{i.icon}</span>
