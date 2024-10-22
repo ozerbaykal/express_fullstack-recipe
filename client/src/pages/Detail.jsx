@@ -6,6 +6,7 @@ import Loader from "../components/Loader";
 import Error from "../components/Error";
 import { TbClockHour8 } from "react-icons/tb";
 import DeleteButton from "../components/DeleteButton";
+import { MdEdit } from "react-icons/md";
 const Detail = () => {
   const { id } = useParams();
 
@@ -26,7 +27,16 @@ const Detail = () => {
           <IoMdArrowRoundBack />
           Geri
         </Link>
-        <DeleteButton productId={data.id} />
+        <div className="flex items-center gap-2">
+          <Link
+            className="flex items-center gap-1 bg-orange-200 py-1 px-3 rounded-md font-semibold text-orange-500 hover:bg-green-600 hover:text-orange-100 shadow"
+            to={`/düzenle/${data?.id}`}
+          >
+            <MdEdit />
+            Düzenle
+          </Link>
+          <DeleteButton disabled={!data?.id} productId={data?.id} />
+        </div>
       </div>
       {isLoading ? (
         <Loader />
@@ -51,8 +61,13 @@ const Detail = () => {
             <div className="my-5">
               <h2 className="title">Malzemeler</h2>
               <ul>
-                {data.ingredients.map((i) => (
-                  <li className="font-semibold text-lg text-orange-900">{i}</li>
+                {data.ingredients.map((i, key) => (
+                  <li
+                    key={key}
+                    className="font-semibold text-lg text-orange-900"
+                  >
+                    {i}
+                  </li>
                 ))}
               </ul>
             </div>
@@ -60,8 +75,11 @@ const Detail = () => {
             <div className="my-5">
               <h2 className="title">Tarif</h2>
               <ol className="list-decimal ps-4">
-                {data.instructions.map((i) => (
-                  <li className=" font-semibold text-lg text-orange-900">
+                {data.instructions.map((i, key) => (
+                  <li
+                    key={key}
+                    className=" font-semibold text-lg text-orange-900"
+                  >
                     {i}
                   </li>
                 ))}

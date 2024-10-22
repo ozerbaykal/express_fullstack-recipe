@@ -3,7 +3,7 @@ import { links } from "../constants";
 
 const SideBar = () => {
   return (
-    <aside className="  flex flex-col h-screen justify-between items-center py-6 md:px-3 max-md:py-1 max-md:gap-20 max-md:justify-normal ">
+    <aside className=" flex flex-col h-screen justify-between items-center py-6 md:px-3 max-md:py-1 max-md:gap-20 max-md:justify-normal ">
       <img
         src="/logo.jpg"
         alt="logo"

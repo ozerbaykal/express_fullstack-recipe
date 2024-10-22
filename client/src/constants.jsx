@@ -7,5 +7,5 @@ export const links = [
   { icon: <IoCreateOutline />, title: "Oluştur", path: "/ekle" },
   { icon: <FaRegCompass />, title: "Keşfet", path: "/tarif/:id" },
   { icon: <CiHeart />, title: "Favoriler", path: "/fav" },
-  { icon: <CiSettings />, title: "Yardım", path: "/yardim" },
+  { icon: <CiSettings />, title: "Yardım", path: "/düzenle" },
 ];
